@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">mobileHCI</string>
+    <string name="title_activity_timer_page">TimerPage</string>
 </resources>
