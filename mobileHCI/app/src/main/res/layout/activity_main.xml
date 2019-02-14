@@ -65,7 +65,6 @@
 
     <Button
         android:id="@+id/clubs"
-
         android:layout_width="166dp"
         android:layout_height="113dp"
         android:layout_marginStart="8dp"
@@ -75,7 +74,7 @@
         android:layout_marginBottom="52dp"
         android:background="@drawable/cycling2"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintEnd_toStartOf="@+id/timer"
         app:layout_constraintHorizontal_bias="0.17"
         app:layout_constraintStart_toStartOf="parent" />
 

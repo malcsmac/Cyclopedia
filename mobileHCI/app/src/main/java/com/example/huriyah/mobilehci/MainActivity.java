@@ -10,6 +10,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button timerButton;
+    private Button clubButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,13 +18,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         timerButton = (Button) findViewById(R.id.timer);
+        clubButton = (Button) findViewById(R.id.clubs);
 
         timerButton.setOnClickListener(this);
+        clubButton.setOnClickListener(this);
+
     }
 
     public void onClick(View view){
         if(view == timerButton){
             Intent intent = new Intent(MainActivity.this, Timer.class);
+            startActivity(intent);
+        }
+        if(view == clubButton){
+            Intent intent = new Intent(MainActivity.this, CyclingClubs.class);
             startActivity(intent);
         }
 
