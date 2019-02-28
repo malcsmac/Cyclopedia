@@ -53,7 +53,16 @@
         android:onClick="clearChronometer" />
 
     <TextView
-        android:id="@+id/longitudeshow"
+        android:id="@+id/longitudeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="70px"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="60sp"
+        android:text="ok"/>
+
+    <TextView
+        android:id="@+id/latitudeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="70px"

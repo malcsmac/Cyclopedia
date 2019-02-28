@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -12,6 +13,7 @@ import android.location.LocationManager;
 import android.os.SystemClock;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,24 +26,11 @@ public class Timer extends AppCompatActivity {
     private Chronometer chronometer;
     private long pauseOffset;
     private boolean operational;
-
     private LocationManager locationManager = null;
-    private MyLocationListener locationListener = null;
 
-    private double longitude;
-    private double latitude;
+    private double longitude, latitude;
 
-
-    private Boolean displayGpsStatus() {
-        ContentResolver contentResolver = getBaseContext().getContentResolver();
-        boolean gpsStatus = Settings.Secure.isLocationProviderEnabled(contentResolver, LocationManager.GPS_PROVIDER);
-
-        if (gpsStatus) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+    TextView longitudeView, latitudeView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +38,10 @@ public class Timer extends AppCompatActivity {
         setContentView(R.layout.activity_timer);
 
         chronometer = findViewById(R.id.chronometer);
-
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+        longitudeView = (TextView) findViewById(R.id.longitudeText);
+        latitudeView = (TextView) findViewById(R.id.latitudeText);
 
     }
 
@@ -60,35 +51,46 @@ public class Timer extends AppCompatActivity {
             chronometer.start();
             operational = true;
 
+            boolean perm = false;
             // implement GPS to start here
-            boolean flag = displayGpsStatus();
-            if (flag) {
-                locationListener = new MyLocationListener();
-                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    // TODO: Consider calling
-                    //    ActivityCompat#requestPermissions
-                    // here to request the missing permissions, and then overriding
-                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                    //                                          int[] grantResults)
-                    // to handle the case where the user grants the permission. See the documentation
-                    // for ActivityCompat#requestPermissions for more details.
-                    return;
+
+            // check if permission is given, if not then ask.
+            if (ContextCompat.checkSelfPermission(this,
+                    android.Manifest.permission.ACCESS_FINE_LOCATION) ==
+                    PackageManager.PERMISSION_GRANTED &&
+                    ContextCompat.checkSelfPermission(this,
+                            android.Manifest.permission.ACCESS_COARSE_LOCATION) ==
+                            PackageManager.PERMISSION_GRANTED) {
+                perm = true;
+            } else {
+                ActivityCompat.requestPermissions(this, new String[]{
+                                Manifest.permission.ACCESS_FINE_LOCATION,
+                                Manifest.permission.ACCESS_COARSE_LOCATION},
+                        0);
+
+                int permissionCheck = ContextCompat.checkSelfPermission(this,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                if (permissionCheck == PackageManager.PERMISSION_GRANTED){
+                    perm = true;
                 }
-                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 10, locationListener);
-                longitude = locationListener.getLongitude();
-                latitude = locationListener.getLatitude();
-                TextView longitudeshow = (TextView)findViewById(R.id.longitudeshow);
-                longitudeshow.setText((int) longitude);
             }
+            if (perm && checkGPS()) {
+                locationManager.requestLocationUpdates(
+                        LocationManager.GPS_PROVIDER, 1,
+                        0, locationListenerGPS);
+            } else {
+                alertbox();
             }
+
         }
-    }
+        }
 
     public void stopChronometer(View v) {
         if (operational) {
             chronometer.stop();
             pauseOffset = SystemClock.elapsedRealtime() - chronometer.getBase();
             operational = false;
+            locationManager.removeUpdates(locationListenerGPS);
         }
     }
 
@@ -99,11 +101,11 @@ public class Timer extends AppCompatActivity {
         }
     }
 
-    protected void alertbox(String title, String message) {
+    protected void alertbox() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Your Device's GPS is disabled, you won't be able to view your speed!")
                 .setCancelable(false)
-                .setTitle("** GPS Status **")
+                .setTitle("GPS Disabled")
                 .setNegativeButton("Close", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
@@ -114,50 +116,45 @@ public class Timer extends AppCompatActivity {
         alert.show();
     }
 
-    /*
-    public void onClick(View view){
-        if(view == b){
+    private boolean checkGPS() {
+        if (!isLocationEnabled()){
+            alertbox();
+        }
+        return isLocationEnabled();
+    }
 
-            Intent intent = new Intent(Timer.this, Timer.class);
-            startActivity(intent);
+    private boolean isLocationEnabled() {
+        //locationManager.checkPermission
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+    }
+
+
+    private final LocationListener locationListenerGPS = new LocationListener() {
+        public void onLocationChanged(Location location) {
+            longitude = location.getLongitude();
+            latitude = location.getLatitude();
+
+            String strLongitude = Double.toString(longitude);
+            String strLatitude = Double.toString(latitude);
+
+            longitudeView.setText(strLongitude);
+            latitudeView.setText(strLatitude);
         }
 
-    } */
+        @Override
+        public void onStatusChanged(String s, int i, Bundle bundle) {
+
+        }
+
+        @Override
+        public void onProviderEnabled(String s) {
+
+        }
+
+        @Override
+        public void onProviderDisabled(String s) {
+
+        }
+    };
 }
 
-class MyLocationListener implements LocationListener {
-
-    private double longitude;
-    private double latitude;
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public double getLatitude() {
-        return latitude;
-    }
-
-    @Override
-    public void onLocationChanged(Location loc) {
-        longitude = loc.getLongitude();
-        latitude = loc.getLatitude();
-
-    }
-
-    @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) {
-
-    }
-
-    @Override
-    public void onProviderEnabled(String provider) {
-
-    }
-
-    @Override
-    public void onProviderDisabled(String provider) {
-
-    }
-
-}
