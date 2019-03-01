@@ -70,20 +70,17 @@ public class Timer extends AppCompatActivity {
 
                 int permissionCheck = ContextCompat.checkSelfPermission(this,
                         Manifest.permission.WRITE_EXTERNAL_STORAGE);
-                if (permissionCheck == PackageManager.PERMISSION_GRANTED){
+                if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
                     perm = true;
                 }
             }
             if (perm && checkGPS()) {
                 locationManager.requestLocationUpdates(
-                        LocationManager.GPS_PROVIDER, 1,
-                        0, locationListenerGPS);
-            } else {
-                alertbox();
+                        LocationManager.GPS_PROVIDER, 2,
+                        1, locationListenerGPS);
             }
-
         }
-        }
+    }
 
     public void stopChronometer(View v) {
         if (operational) {
@@ -103,7 +100,8 @@ public class Timer extends AppCompatActivity {
 
     protected void alertbox() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Your Device's GPS is disabled, you won't be able to view your speed!")
+        builder.setMessage("Your Device's GPS is disabled, you won't be able to view your speed! " +
+                "If you wish to view your speed please enable GPS and ")
                 .setCancelable(false)
                 .setTitle("GPS Disabled")
                 .setNegativeButton("Close", new DialogInterface.OnClickListener() {
@@ -117,7 +115,7 @@ public class Timer extends AppCompatActivity {
     }
 
     private boolean checkGPS() {
-        if (!isLocationEnabled()){
+        if (!isLocationEnabled()) {
             alertbox();
         }
         return isLocationEnabled();
