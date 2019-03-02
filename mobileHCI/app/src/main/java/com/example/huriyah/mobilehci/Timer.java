@@ -21,16 +21,22 @@ import android.view.View;
 import android.widget.Chronometer;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+
 public class Timer extends AppCompatActivity {
 
     private Chronometer chronometer;
     private long pauseOffset;
     private boolean operational;
     private LocationManager locationManager = null;
+    static int status = 0;
+    static double distance = 0.0;
 
-    private double longitude, latitude;
+    private double longitude, latitude, prevLongitude, prevLatitude;
 
-    TextView longitudeView, latitudeView;
+    TextView distanceView;
+
+    private static DecimalFormat df2 = new DecimalFormat(".##");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +46,7 @@ public class Timer extends AppCompatActivity {
         chronometer = findViewById(R.id.chronometer);
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-        longitudeView = (TextView) findViewById(R.id.longitudeText);
-        latitudeView = (TextView) findViewById(R.id.latitudeText);
+        distanceView = (TextView) findViewById(R.id.distanceText);
 
     }
 
@@ -95,6 +100,7 @@ public class Timer extends AppCompatActivity {
         if (!operational) {
             chronometer.setBase(SystemClock.elapsedRealtime());
             pauseOffset = 0;
+            distanceView.setText("Distance: ");
         }
     }
 
@@ -129,14 +135,21 @@ public class Timer extends AppCompatActivity {
 
     private final LocationListener locationListenerGPS = new LocationListener() {
         public void onLocationChanged(Location location) {
-            longitude = location.getLongitude();
-            latitude = location.getLatitude();
+            if (status == 0) {
+                prevLatitude = location.getLatitude();
+                prevLongitude = location.getLongitude();
+            } else if ((status % 2) != 0) {
+                longitude = location.getLongitude();
+                latitude = location.getLatitude();
+                distance += distanceBetweenTwoPoint(prevLatitude, prevLongitude, latitude, longitude);
+            } else if ((status % 2) == 0) {
+                prevLatitude = location.getLatitude();
+                prevLongitude = location.getLongitude();
+                distance += distanceBetweenTwoPoint(latitude, longitude, prevLatitude, prevLongitude);
+            }
+            status++;
 
-            String strLongitude = Double.toString(longitude);
-            String strLatitude = Double.toString(latitude);
-
-            longitudeView.setText(strLongitude);
-            latitudeView.setText(strLatitude);
+            distanceView.setText("Distance: " + df2.format(distance) + " miles");
         }
 
         @Override
@@ -152,6 +165,19 @@ public class Timer extends AppCompatActivity {
         @Override
         public void onProviderDisabled(String s) {
 
+        }
+
+        double distanceBetweenTwoPoint(double srcLat, double srcLng, double desLat, double desLng) {
+            double earthRadius = 6371;
+            double dLat = Math.toRadians(desLat - srcLat);
+            double dLng = Math.toRadians(desLng - srcLng);
+            double a = Math.pow(Math.sin(dLat / 2), 2)
+                    + Math.cos(Math.toRadians(srcLat))
+                    * Math.cos(Math.toRadians(desLat)) * Math.pow(Math.sin(dLng / 2), 2);
+            double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            double dist = earthRadius * c;
+
+            return c * earthRadius;
         }
     };
 }
