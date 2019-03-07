@@ -34,7 +34,7 @@ public class Timer extends AppCompatActivity {
 
     private double longitude, latitude, prevLongitude, prevLatitude;
 
-    TextView distanceView, speedView;
+    TextView distanceView, speedView, calorieView;
 
     private static DecimalFormat df2 = new DecimalFormat(".##");
 
@@ -48,6 +48,7 @@ public class Timer extends AppCompatActivity {
 
         distanceView = (TextView) findViewById(R.id.distanceText);
         speedView = (TextView) findViewById(R.id.speedText);
+        calorieView = (TextView) findViewById(R.id.calorieText);
 
     }
 
@@ -94,6 +95,10 @@ public class Timer extends AppCompatActivity {
             pauseOffset = SystemClock.elapsedRealtime() - chronometer.getBase();
             operational = false;
             locationManager.removeUpdates(locationListenerGPS);
+            calorieView.setText("Calories Burned: 20 kcal");
+            double time = SystemClock.elapsedRealtime() - chronometer.getBase();
+            double speed = distance / ((time/1000)/3600);
+            speedView.setText("Speed: " + df2.format(speed) + " mph");
         }
     }
 
@@ -101,8 +106,10 @@ public class Timer extends AppCompatActivity {
         if (!operational) {
             chronometer.setBase(SystemClock.elapsedRealtime());
             pauseOffset = 0;
-            distanceView.setText("Distance: ");
-            speedView.setText("Speed: ");
+            distance = 0;
+            distanceView.setText("Distance: x");
+            speedView.setText("Speed: x");
+            calorieView.setText("Calories: x");
         }
     }
 
@@ -156,8 +163,6 @@ public class Timer extends AppCompatActivity {
 
             distanceView.setText("Distance: " + df2.format(distance) + " miles");
 
-
-            speedView.setText("Speed: " + time + " mph");
         }
 
         @Override

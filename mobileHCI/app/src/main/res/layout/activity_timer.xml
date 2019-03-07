@@ -56,18 +56,26 @@
         android:id="@+id/distanceText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="70px"
+        android:layout_margin="40px"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="40sp"
-        android:text="Distance: "/>
+        android:textSize="25sp"
+        android:text="Distance: x"/>
 
     <TextView
         android:id="@+id/speedText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="70px"
+        android:layout_margin="40px"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="40sp"
-        android:text="Speed: "/>
+        android:textSize="25sp"
+        android:text="Speed: x"/>
 
+    <TextView
+        android:id="@+id/calorieText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="40px"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="25sp"
+        android:text="Calories: x"/>
 </LinearLayout>
