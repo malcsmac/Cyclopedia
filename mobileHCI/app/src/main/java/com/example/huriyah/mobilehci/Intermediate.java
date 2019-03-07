@@ -42,9 +42,9 @@ public class Intermediate extends Fragment {
 
 
 
-        String [] menuItems = {"\nINTERMEDIATE CYCLING CLUB 1 \n\nDate: 21/03/2019 \nTime: 15:00 \nVenue: ", "\nINTERMEDIATE CYCLING CLUB 2 \n\nDate: 21/03/2019 \nTime: 15:00 \nVenue: ",
-                "\nINTERMEDIATE CYCLING CLUB 3 \n\nDate: 21/03/2019 \nTime: 15:00 \nVenue: ","\nINTERMEDIATE CYCLING CLUB 4 \n\nDate: 21/03/2019 \nTime: 15:00 \nVenue: ",
-                "\nINTERMEDIATE CYCLING CLUB 5 \n\nDate: 21/03/2019 \nTime: 15:00 \nVenue: " ,};
+        String [] menuItems = {"\nLanark Cyclists \n\nDate: 21/03/2019 \nTime: 15:00 \nVenue: Woodside Road ", "\nLoch Cyclists \n\nDate: 21/03/2019 \nTime: 10:00 \nVenue: Seven Lochs Wetland Park ",
+                "\nClyde Cyclists \n\nDate: 21/03/2019 \nTime: 16:00 \nVenue: Clydebank Station","\nCountry Park Cyclists \n\nDate: 21/03/2019 \nTime: 19:00 \nVenue: Mugdock Country Park",
+                "\nWoodland Cyclists \n\nDate: 21/03/2019 \nTime: 22:00 \nVenue: Woodland Experiences " ,};
 
         ArrayAdapter<String> listViewAdapter = new ArrayAdapter<String>(
                 getActivity(), android.R.layout.simple_list_item_1, menuItems

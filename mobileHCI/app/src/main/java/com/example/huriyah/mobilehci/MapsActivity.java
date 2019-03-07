@@ -1,7 +1,9 @@
 package com.example.huriyah.mobilehci;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -28,6 +30,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
         Button lv = (Button) findViewById(R.id.listView);
+        lv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), CyclingClubs.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
 
@@ -54,6 +64,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(bearsden).title("Suburb Cyclists - Beginner Level.").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bearsden, 8));
 
+        LatLng stirling = new LatLng(56.1164, -3.9364);
+        mMap.addMarker(new MarkerOptions().position(stirling).title("Stirling Cyclists - Beginner Level.").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(stirling, 8));
+
         // Add a marker in Glasgow and move the camera
         LatLng ek = new LatLng(55.7644, -4.1770);
         mMap.addMarker(new MarkerOptions().position(ek).title("Community Cyclists - Beginner Level.").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
@@ -68,6 +82,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng mugdock = new LatLng(55.9632, -4.3107);
         mMap.addMarker(new MarkerOptions().position(mugdock).title("Country Park Cyclists - Intermediate Level.").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mugdock, 8));
+
+        // Add a marker in Glasgow and move the camera
+        LatLng woodland = new LatLng(56.0674234, -4.3689438);
+        mMap.addMarker(new MarkerOptions().position(woodland).title("Woodland Cyclists - Intermediate Level.").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(woodland, 8));
 
 
         // Add a marker in Glasgow and move the camera
@@ -98,6 +117,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng lennoxtown = new LatLng(55.9743, -4.2029);
         mMap.addMarker(new MarkerOptions().position(lennoxtown).title("Lennoxtown Cyclists - Expert Level.").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lennoxtown, 8));
+
+        // Add a marker in Glasgow and move the camera
+        LatLng bonny = new LatLng(55.999215, -3.9040264);
+        mMap.addMarker(new MarkerOptions().position(bonny).title("Bonnybridge Cyclists - Expert Level.").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bonny, 8));
+
 
 
         // Add a marker in Glasgow and move the camera

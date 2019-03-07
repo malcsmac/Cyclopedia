@@ -40,9 +40,9 @@ public class Expert extends Fragment {
             }
         });
 
-        String [] menuItems = {"\nEXPERT CYCLING CLUB 1 \n\nDate: 21/03/2019 \nTime: 15:00 \nVenue: ", "\nEXPERT CYCLING CLUB 2 \n\nDate: 21/03/2019 \nTime: 15:00 \nVenue: ",
-                "\nEXPERT CYCLING CLUB 3 \n\nDate: 21/03/2019 \nTime: 15:00 \nVenue: ","\nEXPERT CYCLING CLUB 4 \n\nDate: 21/03/2019 \nTime: 15:00 \nVenue: ",
-                "\nEXPERT CYCLING CLUB 5 \n\nDate: 21/03/2019 \nTime: 15:00 \nVenue: " ,};
+        String [] menuItems = {"\nBonnybridge Cyclists \n\nDate: 21/03/2019 \nTime: 15:00 \nVenue: Bonnybridge Gardens", "\nUniversity Cyclists \n\nDate: 21/03/2019 \nTime: 11:00 \nVenue: Strathclyde Country Park",
+                "\nForest Cyclists \n\nDate: 21/03/2019 \nTime: 17:00 \nVenue: Loudoun Hill  ","\nLennoxtown Cyclists \n\nDate: 21/03/2019 \nTime: 20:00 \nVenue: Station Road",
+                "\nLoch Lomond Cyclists \n\nDate: 21/03/2019 \nTime: 9:00 \nVenue: Loch Lomond Arms" ,};
 
         ArrayAdapter<String> listViewAdapter = new ArrayAdapter<String>(
                 getActivity(), android.R.layout.simple_list_item_1, menuItems

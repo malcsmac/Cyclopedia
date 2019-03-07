@@ -33,9 +33,9 @@ public class Beginner extends Fragment {
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_beginner, container, false);
-        String[] menuItems = {"\nBEGINNER CYCLING CLUB 1 \n\nDate: 21/03/2019 \nTime: 15:00 \nVenue: ", "\nBEGINNER CYCLING CLUB 2 \n\nDate: 21/03/2019 \nTime: 15:00 \nVenue: ",
-                "\nBEGINNER CYCLING CLUB 3 \n\nDate: 21/03/2019 \nTime: 15:00 \nVenue: ", "\nBEGINNER CYCLING CLUB 4 \n\nDate: 21/03/2019 \nTime: 15:00 \nVenue: ",
-                "\nBEGINNER CYCLING CLUB 5 \n\nDate: 21/03/2019 \nTime: 15:00 \nVenue: ",};
+        String[] menuItems = {"\nCommunity Cyclists \n\nDate: 21/03/2019 \nTime: 15:00 \nVenue: East Kilbride", "\nCity Cyclists \n\nDate: 21/03/2019 \nTime: 12:00 \nVenue: Glasgow Savoy Center ",
+                "\nPaisley Cyclists \n\nDate: 21/03/2019 \nTime: 13:30 \nVenue: Gallow Green Road ", "\nSuburb Cyclists \n\nDate: 21/03/2019 \nTime: 18:00 \nVenue: Drymen Road ",
+                "\nStirling Cyclists \n\nDate: 21/03/2019 \nTime: 20:00 \nVenue: The Kilted Kangaroo",};
 
 
         ListView listView = (ListView) view.findViewById(R.id.main_list);
