@@ -61,5 +61,13 @@
         android:textSize="40sp"
         android:text="Distance: "/>
 
+    <TextView
+        android:id="@+id/speedText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="70px"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="40sp"
+        android:text="Speed: "/>
 
 </LinearLayout>

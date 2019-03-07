@@ -34,7 +34,7 @@ public class Timer extends AppCompatActivity {
 
     private double longitude, latitude, prevLongitude, prevLatitude;
 
-    TextView distanceView;
+    TextView distanceView, speedView;
 
     private static DecimalFormat df2 = new DecimalFormat(".##");
 
@@ -47,6 +47,7 @@ public class Timer extends AppCompatActivity {
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
         distanceView = (TextView) findViewById(R.id.distanceText);
+        speedView = (TextView) findViewById(R.id.speedText);
 
     }
 
@@ -101,6 +102,7 @@ public class Timer extends AppCompatActivity {
             chronometer.setBase(SystemClock.elapsedRealtime());
             pauseOffset = 0;
             distanceView.setText("Distance: ");
+            speedView.setText("Speed: ");
         }
     }
 
@@ -135,6 +137,7 @@ public class Timer extends AppCompatActivity {
 
     private final LocationListener locationListenerGPS = new LocationListener() {
         public void onLocationChanged(Location location) {
+            long time = 0;
             if (status == 0) {
                 prevLatitude = location.getLatitude();
                 prevLongitude = location.getLongitude();
@@ -142,14 +145,19 @@ public class Timer extends AppCompatActivity {
                 longitude = location.getLongitude();
                 latitude = location.getLatitude();
                 distance += distanceBetweenTwoPoint(prevLatitude, prevLongitude, latitude, longitude);
+                time = 2;
             } else if ((status % 2) == 0) {
                 prevLatitude = location.getLatitude();
                 prevLongitude = location.getLongitude();
                 distance += distanceBetweenTwoPoint(latitude, longitude, prevLatitude, prevLongitude);
+                time = 3;
             }
             status++;
 
             distanceView.setText("Distance: " + df2.format(distance) + " miles");
+
+
+            speedView.setText("Speed: " + time + " mph");
         }
 
         @Override
