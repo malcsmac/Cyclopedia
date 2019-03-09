@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/inter_frag"
-    tools:context=".Intermediate">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ExpertFrench">
 
     <ListView
         android:id="@+id/main_list"
@@ -23,6 +22,6 @@
         android:layout_marginBottom="30dp"
         android:clickable="true"
         android:src="@android:drawable/ic_dialog_map"
-        app:backgroundTint="@color/colorOrange" />
+        app:backgroundTint="@color/colorRed" />
 
 </FrameLayout>

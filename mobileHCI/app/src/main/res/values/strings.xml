@@ -13,5 +13,6 @@
     <string name="nav_beginner">Beginner</string>
     <string name="nav_intermediate">Intermediate</string>
     <string name="nav_expert">Expert</string>
+    <string name="Débutant" />
 
 </resources>

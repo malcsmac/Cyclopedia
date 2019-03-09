@@ -2,12 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#ffffff"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".Timer">
+    tools:context=".TimerFrench">
 
     <ImageView
         android:id="@+id/imageView"
@@ -37,7 +36,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start"
+        android:text="Début"
         android:backgroundTint="@color/colorBlack"
         android:textColor="@color/colorWhite"
         android:onClick="startChronometer" />
@@ -45,7 +44,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Stop"
+        android:text="Arrêtez"
         android:backgroundTint="@color/colorBlack"
         android:textColor="@color/colorWhite"
         android:onClick="stopChronometer" />
@@ -53,7 +52,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Clear"
+        android:text="Clair"
         android:backgroundTint="@color/colorBlack"
         android:textColor="@color/colorWhite"
         android:onClick="clearChronometer" />
@@ -72,9 +71,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="40px"
+        android:text="La Vitesse: x"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="25sp"
-        android:text="Speed: x"/>
+        android:textSize="25sp" />
 
     <TextView
         android:id="@+id/calorieText"
@@ -83,5 +82,6 @@
         android:layout_margin="40px"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="25sp"
-        android:text="Calories: x"/>
+        android:text="Les Calories: x"/>
+
 </LinearLayout>

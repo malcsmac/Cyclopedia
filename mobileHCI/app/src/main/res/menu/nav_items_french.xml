@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_beginner"
+        android:icon="@drawable/red_icon"
+        android:title="Débutant" />
+
+    <item
+        android:id="@+id/nav_intermediate"
+        android:icon="@drawable/orange_icon"
+        android:title="intermédiaire" />
+
+    <item
+        android:id="@+id/nav_expert"
+        android:icon="@drawable/green_icon"
+        android:title="Expert"/>
+
+
+</menu>

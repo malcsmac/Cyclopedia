@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void onClick(View view){
         if(view == timerButton){
-            Intent intent = new Intent(MainActivity.this, Timer.class);
+            Intent intent = new Intent(MainActivity.this, Languages.class);
             startActivity(intent);
         }
         if(view == clubButton){
