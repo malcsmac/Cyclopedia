@@ -24,7 +24,7 @@
         app:itemTextColor="@color/nav_item_colors"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/nav_items">
+        app:menu="@menu/nav_items_french">
 
     </android.support.design.widget.BottomNavigationView>
 
