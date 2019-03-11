@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Help">
+
+    <ImageView
+        android:layout_width="49dp"
+        android:layout_height="76dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="341dp"
+        android:src="@drawable/greenmarker"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="7dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="138dp"
+        android:layout_height="59dp"
+        android:layout_alignStart="@+id/textView5"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="158dp"
+        android:layout_marginBottom="350dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="Beginner"
+        android:textSize="20dp"
+        tools:layout_editor_absoluteX="179dp"
+        tools:layout_editor_absoluteY="43dp" />
+
+    <ImageView
+        android:layout_width="45dp"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="286dp"
+        android:layout_marginBottom="211dp"
+        android:src="@drawable/orangemarker"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="140dp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="143dp"
+        android:layout_height="63dp"
+        android:layout_alignStart="@+id/textView6"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="295dp"
+        android:layout_marginBottom="209dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="Intermediate"
+        android:textSize="20dp"
+        tools:layout_editor_absoluteX="179dp"
+        tools:layout_editor_absoluteY="180dp" />
+
+
+    <ImageView
+        android:layout_width="91dp"
+        android:layout_height="121dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="386dp"
+        android:layout_marginBottom="60dp"
+        android:src="@drawable/redmarker"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="289dp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="150dp"
+        android:layout_height="65dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="432dp"
+        android:layout_marginEnd="62dp"
+        android:layout_marginRight="62dp"
+        android:layout_marginBottom="70dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="Expert"
+        android:textSize="20dp"
+        tools:layout_editor_absoluteX="179dp"
+        tools:layout_editor_absoluteY="317dp" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="match_parent"
+        android:layout_height="98dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="45dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="Markers:"
+        android:textSize="40dp" />
+
+</RelativeLayout>

@@ -1,6 +1,7 @@
 package com.example.huriyah.mobilehci;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -37,6 +38,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 startActivity(intent);
             }
         });
+
+
+        FloatingActionButton qmark = (FloatingActionButton) findViewById(R.id.qmark);
+        qmark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Help.class);
+                startActivity(intent);
+            }
+        });
+
+
+
 
     }
 

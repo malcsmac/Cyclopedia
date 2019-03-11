@@ -38,13 +38,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         t = (TextView) findViewById(R.id.view);
 
 
-        final Runnable r = new Runnable() {
+
+        Runnable r = new Runnable() {
             int count = 0;
+
 
             @Override
             public void run() {
                     count++;
-                    if (count < 24) {
+                    if (count < 34) {
                         if (count / 2 == 0) {
                             t.setText("" + count * 1.8 + " mph");
                         } else {
@@ -52,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         }
                     }
                     else{
-                        t.setText(" > 20 mph \n SLOW DOWN!!");
+                        t.setText("> 30mph \n SLOW DOWN!");
                     }
                     h.postDelayed(this, 1000); //ms
                 }

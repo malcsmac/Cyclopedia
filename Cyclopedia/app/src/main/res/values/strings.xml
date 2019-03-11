@@ -14,5 +14,6 @@
     <string name="nav_intermediate">Intermediate</string>
     <string name="nav_expert">Expert</string>
     <string name="Débutant" />
+    <string name="speed"><![CDATA[> >30 mph   SLOW DOWN!!]]></string>
 
 </resources>
